@@ -26,6 +26,8 @@ function init(){
 	EarthMaterial = new THREE.MeshBasicMaterial({map: texture, overdraw: true, transparent: true});
 	Earth = new THREE.Mesh(EarthGeometry, EarthMaterial);
 	
+	Earth.position.set(2000,0,0);
+	
 	EarthAtmGeometry = new THREE.SphereGeometry(70, 40, 40);
 	var textureAtm = new THREE.Texture();
 	var TextureAtmLoader = new THREE.TextureLoader();
@@ -49,7 +51,7 @@ function init(){
 	Moon = new THREE.Mesh(MoonGeometry, MoonMaterial);	
 	Moon.position.set(Earth.position.x+200, Earth.position.y+75, Earth.position.z ); 	
 	
-	Moon.geometry.applyMatrix(new THREE.Matrix4().makeTranslation( Earth.position.x+200, Earth.position.x+5, 0 ) );
+	Moon.geometry.applyMatrix(new THREE.Matrix4().makeTranslation( Earth.position.x-1800, Earth.position.y+5, Earth.position.z ) );
 	
 	scene.add(Earth, EarthAtm, Moon);
 	
@@ -84,8 +86,6 @@ function init(){
 		Moon.position.x = Earth.position.x;
 		Moon.position.z = Earth.position.z;
 		
-		
-	
 		
 		Moon.rotation.y += 0.01;
 		EarthAtm.rotation.y += 0.01;
